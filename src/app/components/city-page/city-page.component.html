@@ -1,0 +1,22 @@
+<div class="detais-header">
+    <span [textContent]="header"></span>
+</div>
+<div class="details-page">
+    <ng-container *ngFor="let day of cityDetails; let i=index;">
+        <div class="individual-day" (click)="setActive(i)" [ngClass]="{'active-tab': day.isActive}">
+            <div class="day-section">
+                <span [textContent]="day.date"></span>
+            </div>
+            <div class="cloud-section">
+                <img class="card-image" src="../../../assets/images/cloud.png" alt="cloud image">
+            </div>
+            <div class="temp-section">
+                <span [textContent]="day.temperature"></span>
+            </div>
+        </div>
+    </ng-container>
+</div>
+<div class="below-content">
+    <p [textContent]="'Temperature is '+activeContent.temperature"></p>
+    <p [textContent]="'Sea-Level is '+activeContent.seaLevel"></p>
+</div>

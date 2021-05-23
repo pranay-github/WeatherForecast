@@ -1,0 +1,21 @@
+<div class="city-card" (click)="onCardClick()" *ngIf="cityData">
+    <div class="card-header">
+        <span class ="card-badge" [textContent]="cityData.name"></span>
+    </div>
+    <div class="card-content">
+        <div class="image-content">
+            <img class="card-image" [src]="getImageURL()" [alt]="cityData.name">
+        </div>
+        <div class="card-details">
+            <div class="temperature">
+                <span class ="card-badge" [textContent]="cityData.temperature"></span>
+            </div>
+            <div class="sun-rise-time">
+                <span class ="card-badge" [textContent]="cityData.sunRiseTime"></span>
+            </div>
+            <div class="sun-set-time">
+                <span class ="card-badge" [textContent]="cityData.sunSetTime"></span>
+            </div>
+        </div>
+    </div>
+</div>

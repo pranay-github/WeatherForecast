@@ -1,0 +1,53 @@
+@import '../../styles/common-mixins.less';
+
+.city-card {
+    width: 340px;
+    height: 160px;
+    margin: 10px;
+    background-color: #addaf9;
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px darkgrey;
+    cursor: pointer;
+    @media screen and (max-width: 760px) {
+        width: 340px;
+        height: 160px;
+        box-shadow: 5px 10px 5px darkgrey;
+    }
+    .card-header {
+        .setFontProps('Poppins', 18px, bold, black);
+        padding: 20px 0 10px;
+        margin: 10px;
+        color: white;
+        .card-badge {
+            background: black;
+            padding: 10px;
+            font-weight: bold
+        }
+    }
+    .card-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .image-content {
+            margin: 10px;
+            flex: 1;
+            .card-image {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        .card-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin: 10px;
+            flex: 2;
+            background-color: aliceblue;
+            .temperature, .sun-rise-time, .sun-set-time {
+                .setFontProps('Poppins', 13px, normal, slategray);
+                padding: 3px;
+            }
+        }
+         
+    }
+}

@@ -1,0 +1,97 @@
+@import '../../styles/common-mixins.less';
+.detais-header {
+    .setFontProps('Poppins', 20px, bold, white);
+    margin-left: 20px;
+    @media screen and (max-width: 760px) {
+        margin: 30% 10px 20px;
+    }
+
+    & > span {
+        background-color: black;
+        padding: 10px;
+    }
+}
+.details-page {
+    display: flex;
+    flex-wrap: wrap;
+    @media screen and (max-width: 760px) {
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+    }
+    .individual-day {
+        display: flex;
+        position: relative;
+        align-items: center;
+        flex-direction: column;
+        margin: 20px;
+        padding: 10px;
+        width: 10%;
+        border: 2px solid transparent;
+        @media screen and (max-width: 760px) {
+            width: 50%;
+            margin: 10px 10px 27px;
+        }
+        &.active-tab {
+            background-color: darkgrey;
+            &::after {
+                content: "";
+                height: 0;
+                width: 0;
+                position: absolute;
+                top: 100%;
+                border-top: 30px solid darkgrey;
+                border-left: 30px solid transparent;
+                border-right: 30px solid transparent;
+            }
+        }
+        
+        &:hover {
+            border: 2px solid black;
+            &.active-tab {
+                .day-section {
+                    .setFontProps('Poppins', 30px, bold, white);
+                    @media screen and (max-width: 760px) {
+                        .setFontProps('Poppins', 20px, bold, white);
+                    }
+                }
+                .temp-section {
+                    .setFontProps('Poppins', 50px, bold, white);
+                    @media screen and (max-width: 760px) {
+                        .setFontProps('Poppins', 40px, bold, white);
+                    }
+                }
+                &::after {
+                    border-top: 30px solid black;
+                }
+            }
+        }
+        .day-section {
+            .setFontProps('Poppins', 30px, bold, black);
+            @media screen and (max-width: 760px) {
+                .setFontProps('Poppins', 20px, bold, black);
+            }
+        }
+        .cloud-section img{
+            width: 60px;
+            height: 60px;
+        }
+        .temp-section {
+            .setFontProps('Poppins', 50px, bold, black);
+            @media screen and (max-width: 760px) {
+                .setFontProps('Poppins', 40px, bold, black);
+            }
+        }
+    }
+}
+.below-content {
+    background: linear-gradient(to right, maroon 0, rgb(240, 245, 255) 100%);
+    margin: 10px 20px 20px;
+    @media screen and (max-width: 760px) {
+        margin: 20px 10px;
+    }
+    padding-left: 10px;
+    & p {
+        .setFontProps('Poppins', 15px, bold, white);
+        letter-spacing: 3px;
+    }
+}

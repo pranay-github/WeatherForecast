@@ -1,35 +1,35 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { of, throwError } from 'rxjs';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
+  let component: AppComponent;
+  let errorService;
+  beforeEach(() => {
+    errorService = {
+      error: {
+        subscribe: jasmine.createSpy('subscribe').and.returnValue(of())
+      }
+    };
+    component = new AppComponent(errorService);
+  });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
-
-  it(`should have as title 'Mobiquity'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Mobiquity');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Mobiquity app is running!');
+  describe('#ngOnInit', () => {
+    it('should handle success', () => {
+      component.ngOnInit();
+      expect(component.showError).toBe(false);
+    });
+    it('should handle failure', () => {
+      errorService.error.subscribe.and.callFake(a => a('message'));
+      component.ngOnInit();
+      expect(component.showError).toBe(true);
+    });
+    it('should handle failure', () => {
+      errorService.error.subscribe.and.callFake(a => a());
+      component.ngOnInit();
+      expect(component.showError).toBe(false);
+    });
   });
 });
